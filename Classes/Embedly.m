@@ -102,7 +102,8 @@
     NSString *displayQuery = @"?";
     NSString *param;
     for (id key in params) {
-        NSString *paramValue = [params[key] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        NSString *val = params[key];
+        NSString *paramValue = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)val, NULL, (CFStringRef)@"!*'\();:@&=+$,/?%#[] ", kCFStringEncodingUTF8));
         if ([displayQuery length] == 1) {
             displayQuery = [NSString stringWithFormat:@"?%@=%@", key, paramValue];
         } else {
