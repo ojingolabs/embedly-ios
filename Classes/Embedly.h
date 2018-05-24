@@ -20,18 +20,18 @@
  @param callUrl The full Embedly API call. Useful for caching and debugging.
  @param withResponse The Embedly API response. Can be accessed as an NSDictionary, or NSArray of NSDictionarys in the case of a batch call.
  @param endpoint The Embedly API endpoint used by the API call.
- @param operation Additional information about the HTTP call.
+ @param task Additional information about the HTTP call.
 */
-- (void)embedlySuccess:(NSString *)callUrl withResponse:(id)response endpoint:(NSString *)endpoint operation:(AFHTTPRequestOperation *)operation;
+- (void)embedlySuccess:(NSString *)callUrl withResponse:(id)response endpoint:(NSString *)endpoint task:(NSURLSessionTask *)task;
 /**
  embedlyFailure is called if there is some issue with the Embedly HTTP call
  
  @param callUrl The full Embedly API call. For debugging, try this URL in your browser.
  @param withError The error returned by the HTTP call.
  @param endpoint The Embedly API endpoint used by the API call.
- @param operation Additional information about the HTTP call.
+ @param task Additional information about the HTTP call.
  */
-- (void)embedlyFailure:(NSString *)callUrl withError:(NSError *)error endpoint:(NSString *)endpoint operation:(AFHTTPRequestOperation *)operation;
+- (void)embedlyFailure:(NSString *)callUrl withError:(NSError *)error endpoint:(NSString *)endpoint task:(NSURLSessionTask *)task;
 
 @end
 
