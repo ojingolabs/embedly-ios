@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "embedly-ios"
-  s.version          = "1.0.0"
+  s.version          = "1.1.0"
   s.summary          = "An iOS library for interacting with Embedly's suite of APIs."
   s.description      = <<-DESC
 			An iOS library for interacting with Embedly's suite of APIs.
@@ -20,5 +20,5 @@ Pod::Spec.new do |s|
   s.source_files = 'Classes/Embedly.{h,m}'
 
   s.public_header_files = 'Classes/Embedly.h'
-  s.dependency 'AFNetworking', '~> 2.0'
+  s.dependency 'AFNetworking', '~> 3.2.1'
 end

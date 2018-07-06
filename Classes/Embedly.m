@@ -117,17 +117,17 @@
 
 - (NSString *)fetchEmbedlyApi:(NSString *)endpoint withParams:(NSDictionary *)params {
     NSString *embedlyUrl = [self buildEmbedlyUrl:endpoint withParams:params];
-    
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     AFHTTPRequestSerializer *requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.requestSerializer = requestSerializer;
     [requestSerializer setValue:@"embedly-ios/1.0" forHTTPHeaderField:@"User-Agent"];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
-    [manager GET:embedlyUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [[self delegate] embedlySuccess:embedlyUrl withResponse:responseObject endpoint:endpoint operation:operation];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [[self delegate] embedlyFailure:embedlyUrl withError:error endpoint:endpoint operation:operation];
+    [manager GET:embedlyUrl parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [[self delegate] embedlySuccess:embedlyUrl withResponse:responseObject endpoint:endpoint task:task];
+    } failure:^(NSURLSessionTask *task, NSError *error) {
+        [[self delegate] embedlyFailure:embedlyUrl withError:error endpoint:endpoint task:task];
     }];
     
     return embedlyUrl;

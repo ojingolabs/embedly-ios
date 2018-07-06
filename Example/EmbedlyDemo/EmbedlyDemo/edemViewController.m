@@ -73,11 +73,11 @@
     }
 }
 
-- (void)embedlyFailure:(NSString *)callUrl withError:(NSError *)error endpoint:(NSString *)endpoint operation:(AFHTTPRequestOperation *)operation {
+- (void)embedlyFailure:(NSString *)callUrl withError:(NSError *)error endpoint:(NSString *)endpoint task:(NSURLSessionTask *)task {
     NSLog(@"embedly failure %@", callUrl);
 }
 
-- (void)embedlySuccess:(NSString *)callUrl withResponse:(id)response endpoint:(NSString *)endpoint operation:(AFHTTPRequestOperation *)operation {
+- (void)embedlySuccess:(NSString *)callUrl withResponse:(id)response endpoint:(NSString *)endpoint task:(NSURLSessionTask *)task {
     NSLog(@"embedly success %@, %@", callUrl, [response description]);
     self.urlResponse.text = [response description];
     self.urlTitle.text = [response objectForKey:@"title"];
